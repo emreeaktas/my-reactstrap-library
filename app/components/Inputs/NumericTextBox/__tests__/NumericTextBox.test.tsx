@@ -5,7 +5,7 @@ import NumericTextBox from "../NumericTextBox";
 
 describe("NumericTextBox Component", () => {
   test("renders with label", () => {
-    render(<NumericTextBox label="Test Label" id="test-numeric" />);
+    render(<NumericTextBox id="test-numeric" />);
 
     expect(screen.getByText("Test Label")).toBeInTheDocument();
     expect(screen.getByLabelText("Test Label")).toBeInTheDocument();
@@ -19,7 +19,6 @@ describe("NumericTextBox Component", () => {
     fireEvent.change(input, { target: { value: "42" } });
 
     expect(handleChange).toHaveBeenCalledTimes(1);
-    // Check if the value was converted to a number
     expect(handleChange.mock.calls[0][0].target.value).toBe(42);
   });
 
@@ -39,33 +38,20 @@ describe("NumericTextBox Component", () => {
   });
 
   test("shows validation message when invalid", () => {
-    render(
-      <NumericTextBox
-        label="Test Numeric"
-        valid={false}
-        validationMessage="Value is out of range"
-        validityStyles={true}
-      />
-    );
+    render(<NumericTextBox valid={false} validityStyles={true} />);
 
     expect(screen.getByText("Value is out of range")).toBeInTheDocument();
   });
 
   test("applies the correct validation styles", () => {
     const { rerender } = render(
-      <NumericTextBox label="Test Numeric" valid={true} validityStyles={true} />
+      <NumericTextBox valid={true} validityStyles={true} />
     );
 
     const input = screen.getByRole("spinbutton");
     expect(input).toHaveClass("is-valid");
 
-    rerender(
-      <NumericTextBox
-        label="Test Numeric"
-        valid={false}
-        validityStyles={true}
-      />
-    );
+    rerender(<NumericTextBox valid={false} validityStyles={true} />);
 
     expect(input).toHaveClass("is-invalid");
   });

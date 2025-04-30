@@ -51,6 +51,7 @@ $theme-colors: (
 
 // Import Bootstrap
 @import "bootstrap/scss/bootstrap";
+@import "@progress/kendo-theme-fluent/scss/all";
 
 // Now define CSS variables after Bootstrap is imported
 :root {
@@ -75,4 +76,156 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
+}
+
+/* TimeInput.css */
+/* rc-time-picker genel wrapper */
+.rc-time-input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Input stilini Reactstrap'e benzet */
+.custom-time-picker {
+  width: 100%;
+}
+
+.custom-time-picker .rc-time-picker-input {
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  width: 100%;
+}
+
+/* Hover ve focus stilleri */
+.custom-time-picker .rc-time-picker-input:hover {
+  border-color: #f1734f; /* Primary renk */
+}
+
+.custom-time-picker .rc-time-picker-input:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #f1734f; /* Primary renk */
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(241, 115, 79, 0.25); /* Primary renk hafif gölge */
+}
+
+/* Dropdown panel stilleri */
+.custom-time-popup {
+  font-size: 14px;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  background-color: white;
+}
+
+/* Dropdown içindeki saat/dakika panelleri */
+.custom-time-popup .rc-time-picker-panel-inner {
+  border: none;
+  box-shadow: none;
+}
+
+.custom-time-popup .rc-time-picker-panel-select {
+  overflow-y: auto;
+  max-height: 180px;
+  border-right: 1px solid #ced4da;
+}
+
+.custom-time-popup .rc-time-picker-panel-select:last-child {
+  border-right: none;
+}
+
+/* Seçim seçenekleri stilini */
+.custom-time-popup .rc-time-picker-panel-select li {
+  padding: 5px 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover durumu primary renk tonuyla işaretleme */
+.custom-time-popup .rc-time-picker-panel-select li:hover {
+  background-color: rgba(241, 115, 79, 0.2) !important; /* Açık primary renk */
+}
+
+/* Seçili element primary renkle işaretleme */
+.custom-time-popup
+  .rc-time-picker-panel-select
+  li.rc-time-picker-panel-select-option-selected {
+  background-color: #f1734f !important; /* Primary renk */
+  color: white !important;
+  font-weight: 500;
+}
+
+/* Disabled seçenekler */
+.custom-time-popup
+  .rc-time-picker-panel-select
+  li.rc-time-picker-panel-select-option-disabled {
+  color: #adb5bd;
+  opacity: 0.65;
+}
+
+/* Validation stilleri */
+.is-valid .rc-time-picker-input {
+  border-color: #34c38f; /* Success rengi */
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2334c38f' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.is-invalid .rc-time-picker-input {
+  border-color: #f46a6a; /* Danger rengi */
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23f46a6a'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23f46a6a' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Disabled stil */
+.custom-time-picker.rc-time-picker-disabled .rc-time-picker-input {
+  background-color: #e9ecef;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+/* İkon stilini düzeltme */
+.custom-time-picker .rc-time-picker-icon {
+  right: 7px;
+}
+
+.custom-time-picker .rc-time-picker-icon svg {
+  fill: #6c757d;
+}
+
+.custom-time-picker:hover .rc-time-picker-icon svg {
+  fill: #f1734f; /* Primary renk */
+}
+
+/* Scrollbar stillerini düzeltme */
+.custom-time-popup .rc-time-picker-panel-select::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-time-popup .rc-time-picker-panel-select::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.custom-time-popup .rc-time-picker-panel-select::-webkit-scrollbar-thumb {
+  background: #adb5bd;
+  border-radius: 3px;
+}
+
+.custom-time-popup .rc-time-picker-panel-select::-webkit-scrollbar-thumb:hover {
+  background: #f1734f; /* Primary renk */
 }
