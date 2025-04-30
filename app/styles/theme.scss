@@ -1,0 +1,78 @@
+// app/styles/theme.scss
+
+// Define the base color variables first
+$blue: #556ee6;
+$indigo: #564ab1;
+$indigo-light: rgba($indigo, 0.4);
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #f46a6a;
+$orange: #f1734f;
+$yellow: #f1b44c;
+$green: #34c38f;
+$teal: #050505;
+$cyan: #50a5f1;
+
+// Define gray colors
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+// Define theme colors
+$primary: $orange;
+$secondary: $gray-600;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-200;
+$dark: $gray-800;
+
+// Theme colors map
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "pink": $pink,
+  "light": $light,
+  "dark": $dark,
+);
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Now define CSS variables after Bootstrap is imported
+:root {
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --success: #{$success};
+  --info: #{$info};
+  --warning: #{$warning};
+  --danger: #{$danger};
+  --pink: #{$pink};
+  --light: #{$light};
+  --dark: #{$dark};
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
